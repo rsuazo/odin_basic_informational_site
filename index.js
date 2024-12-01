@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
@@ -18,5 +20,12 @@ http
       console.log(myURL);
       return res.end();
     });
+
+    if (process.env.NODE_ENV === "prod") {
+      // do production-specific stuff
+    }
+
+    // don't want to ruin the surprise by hardcoding the URL!
+    // it might even change every few days!
   })
   .listen(8080);
